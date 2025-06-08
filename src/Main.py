@@ -56,11 +56,13 @@ while True:
 
     # --- Loan Payment Section ---
     if isloan:
+        print("You still owe me " + str(debt) + " chips.")
         answer = input("Do you want to pay " + str(pay) + " this round? Or let it compound. y/n")
         if answer == "y":
             if money >= pay:
                 money -= pay
                 debt -= pay
+                loanlen-= 1
                 pay = round(debt / loanlen)
                 print("You now have " + str(money) + " chips.")
                 if debt <= 0:
@@ -70,7 +72,8 @@ while True:
                 print("Get more money bro. Ur broke.")
         else:
             missed += 1
-            debt = round(ogdebt * ((1 + rate) ** missed))
+            loanlen -= 1
+            debt = round(debt * ((1 + rate) ** missed))
             print("You better pay next round. Your debt has compounded to " + str(debt) + " chips.")
             pay = round(debt / loanlen)
 
@@ -196,12 +199,3 @@ while True:
     else:
         print("Restarting game...")
         os.system('clear')  # Clear the screen for a fresh start
-        guess = ""
-        isloan = False
-        money = 100
-        debt = 0
-        ogdebt = 0
-        rate = 0.2
-        missed = 0
-        loanlen = 0
-        pay = 0
