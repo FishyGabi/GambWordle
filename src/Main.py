@@ -42,8 +42,6 @@ while True:
     # Select random answer word
     wordnum = random.randint(0, len(wordAnswers) - 1)
     word = wordAnswers[wordnum]
-    print(word)  # Remove or comment out for production
-
     # --- Game Introduction ---
     print("Welcome to:")
     print("   _____                 _                          _ _   ")
