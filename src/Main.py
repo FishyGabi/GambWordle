@@ -195,7 +195,13 @@ while True:
 
     # --- Play Again Prompt ---
     if input("Do you want to play again? y/n") == "n":
-        break
+        if isloan:
+            input("You have a lone, I'm not going to let you leave until you pay it off.(Enter to continue)")
+            print("Restarting game...")
+            os.system('clear')
+        else:
+            break
+
     else:
         print("Restarting game...")
         os.system('clear')  # Clear the screen for a fresh start
